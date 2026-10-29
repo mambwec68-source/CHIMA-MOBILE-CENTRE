@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chima Mobile Centre - Online Phone Catalog & Credit Options</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0056b3',
+                        brandBlueDark: '#003d80',
+                        brandAmber: '#f59e0b',
+                        brandAmberDark: '#d97706',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brandAmber text-slate-900 font-semibold text-xs sm:text-sm py-2 px-4 text-center shadow-inner">
+        <i class="fa-solid fa-truck-fast mr-1"></i> Special Credit Terms & In-Store Pickups Available Across All 7 Stores in Southern Province & Chirundu!
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="bg-brandBlue text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-2.5 rounded-xl shadow-md flex items-center justify-center">
+                    <i class="fa-solid fa-mobile-screen-button text-2xl text-brandBlue"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Chima Mobile Centre</h1>
+                    <p class="text-xs sm:text-sm text-amber-300 font-medium">Your Trusted Phone Store Across Zambia</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+                <a href="https://wa.me/260977107110?text=Hi%20Chima%20Mobile%20Centre,%20I%20have%20a%20general%20inquiry." 
+                   target="_blank" 
+                   class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 px-4 rounded-xl shadow-md transition flex items-center gap-2 text-sm w-full md:w-auto justify-center">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Contact: 0977107110</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- Hero Banner / Credit Highlight -->
+        <section class="bg-gradient-to-r from-brandBlue to-blue-900 rounded-2xl text-white p-6 sm:p-8 shadow-xl mb-8 relative overflow-hidden">
+            <div class="relative z-10 max-w-2xl">
+                <span class="bg-brandAmber text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Easy Pay Installments</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold mb-3 leading-tight">Get Your Dream Smartphone Today on Credit!</h2>
+                <p class="text-blue-100 text-sm sm:text-base mb-6">Pay an easy initial deposit and split the balance over affordable monthly payments. Available for Infinix, Tecno, Samsung, and Itel across all our stores.</p>
+                <a href="#credit-calculator" class="bg-white text-brandBlue font-bold py-2.5 px-5 rounded-xl shadow-md hover:bg-slate-100 transition inline-flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-calculator text-brandAmber"></i>
+                    <span>Try Credit Calculator Below</span>
+                </a>
+            </div>
+            <!-- Decorative Background Graphic -->
+            <div class="absolute -right-10 -bottom-10 opacity-15 pointer-events-none text-white hidden sm:block">
+                <i class="fa-solid fa-mobile-retro text-[240px]"></i>
+            </div>
+        </section>
+
+        <!-- Search & Filter Controls -->
+        <section class="bg-white rounded-2xl p-5 shadow-md mb-8 border border-slate-200">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                
+                <!-- Search Bar -->
+                <div class="md:col-span-4 relative">
+                    <label for="searchInput" class="block text-xs font-semibold text-slate-500 mb-1">Search Catalog</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="searchInput" placeholder="Search phone model, storage (e.g. Hot 60i, 128GB)..." 
+                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brandBlue text-sm">
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="md:col-span-3">
+                    <label for="brandFilter" class="block text-xs font-semibold text-slate-500 mb-1">Filter by Brand</label>
+                    <select id="brandFilter" class="w-full py-2.5 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brandBlue text-sm bg-white">
+                        <option value="all">All Brands</option>
+                        <option value="Infinix">Infinix</option>
+                        <option value="Tecno">Tecno</option>
+                        <option value="Itel">Itel</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+                </div>
+
+                <!-- Location Filter -->
+                <div class="md:col-span-3">
+                    <label for="storeFilter" class="block text-xs font-semibold text-slate-500 mb-1">Filter by Store Location</label>
+                    <select id="storeFilter" class="w-full py-2.5 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brandBlue text-sm bg-white">
+                        <option value="all">All Locations (7 Stores)</option>
+                        <option value="Livingstone">Livingstone</option>
+                        <option value="Kazungula">Kazungula</option>
+                        <option value="Choma">Choma</option>
+                        <option value="Monze">Monze</option>
+                        <option value="Maamba">Maamba</option>
+                        <option value="Sinazeze">Sinazeze</option>
+                        <option value="Chirundu">Chirundu</option>
+                    </select>
+                </div>
+
+                <!-- Reset Filter Button -->
+                <div class="md:col-span-2 flex items-end">
+                    <button id="resetFilters" class="w-full py-2.5 px-3 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 font-medium text-sm transition flex items-center justify-center gap-2 h-[42px] mt-auto">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        <span>Reset Filters</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Active Filter Status & Count -->
+            <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap justify-between items-center text-xs text-slate-500 gap-2">
+                <div>
+                    Showing <span id="itemCount" class="font-bold text-slate-800">0</span> items
+                </div>
+                <div id="filterTags" class="flex flex-wrap gap-2">
+                    <!-- Dynamic badges inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Cards Grid -->
+        <section class="mb-12">
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamic product cards will be generated by JavaScript -->
+            </div>
+
+            <!-- Empty State Message -->
+            <div id="noResults" class="hidden text-center py-16 bg-white rounded-2xl shadow-sm border border-slate-200">
+                <i class="fa-solid fa-box-open text-5xl text-slate-300 mb-4"></i>
+                <h3 class="text-lg font-bold text-slate-700">No phones matching your criteria</h3>
+                <p class="text-slate-500 text-sm mt-1">Try selecting a different brand or clearing your search filters.</p>
+                <button onclick="resetAllFilters()" class="mt-4 bg-brandBlue text-white text-xs font-bold py-2 px-4 rounded-xl shadow">Show All Phones</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Credit Installment Estimator Section -->
+        <section id="credit-calculator" class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200 mb-12">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-6">
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Interactive Tool</span>
+                    <h2 class="text-2xl font-bold text-slate-800 mt-2">Custom Credit Installment Calculator</h2>
+                    <p class="text-slate-500 text-sm">Select any model from our store or input a custom cash price to estimate your down payment and monthly budget.</p>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Input Form Side -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Select Phone Model</label>
+                            <select id="calcModelSelect" class="w-full py-2.5 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brandBlue text-sm bg-white">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Or Enter Custom Cash Price (ZMW)</label>
+                            <input type="number" id="calcPriceInput" min="100" placeholder="e.g. 3500" value="3500"
+                                   class="w-full py-2.5 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brandBlue text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Repayment Duration</label>
+                            <div class="grid grid-cols-3 gap-2" id="tenureGroup">
+                                <button type="button" data-months="3" class="tenure-btn py-2 text-xs font-bold rounded-lg border border-brandBlue bg-brandBlue text-white">3 Months</button>
+                                <button type="button" data-months="6" class="tenure-btn py-2 text-xs font-bold rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-100">6 Months</button>
+                                <button type="button" data-months="9" class="tenure-btn py-2 text-xs font-bold rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-100">9 Months</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output Calculations Side -->
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 flex flex-col justify-between shadow-sm">
+                        <div class="space-y-4">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b pb-2">Estimated Breakdown</h4>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600">Total Cash Value:</span>
+                                <span id="outCashPrice" class="font-bold text-slate-800">ZMW 3,500</span>
+                            </div>
+
+                            <div class="flex justify-between items-center bg-amber-50 p-2.5 rounded-lg border border-amber-200">
+                                <span class="text-xs font-semibold text-amber-900">Required Down Payment (35%):</span>
+                                <span id="outDeposit" class="font-extrabold text-amber-700 text-base">ZMW 1,225</span>
+                            </div>
+
+                            <div class="flex justify-between items-center bg-emerald-50 p-2.5 rounded-lg border border-emerald-200">
+                                <span class="text-xs font-semibold text-emerald-900">Monthly Installment:</span>
+                                <span id="outMonthly" class="font-extrabold text-emerald-700 text-base">ZMW 835 / mo</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t">
+                            <a id="calcWhatsappBtn" href="#" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 px-4 rounded-xl shadow transition flex items-center justify-center gap-2 text-xs">
+                                <i class="fa-brands fa-whatsapp text-base"></i>
+                                <span>Apply for Credit on WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Store Locations Directory -->
+        <section class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl mb-8">
+            <h3 class="text-xl font-extrabold mb-2 text-center">Our Store Locations in Southern Province & Chirundu</h3>
+            <p class="text-slate-400 text-xs sm:text-sm text-center mb-6">Visit any of our 7 physical branches for cash purchases or credit plan applications.</p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 text-center">
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-location-dot text-brandAmber mb-1 text-sm"></i>
+                    <div class="font-bold text-xs text-slate-200">Livingstone</div>
+                    <div class="text-[10px] text-slate-400">Main Street Branch</div>
+                </div>
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-location-dot text-brandAmber mb-1 text-sm"></i>
+                    <div class="font-bold text-xs text-slate-200">Kazungula</div>
+                    <div class="text-[10px] text-slate-400">Border Post Mall</div>
+                </div>
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-location-dot text-brandAmber mb-1 text-sm"></i>
+                    <div class="font-bold text-xs text-slate-200">Choma</div>
+                    <div class="text-[10px] text-slate-400">Town Centre</div>
+                </div>
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-location-dot text-brandAmber mb-1 text-sm"></i>
+                    <div class="font-bold text-xs text-slate-200">Monze</div>
+                    <div class="text-[10px] text-slate-400">Lusaka Road</div>
+                </div>
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-location-dot text-brandAmber mb-1 text-sm"></i>
+                    <div class="font-bold text-xs text-slate-200">Maamba</div>
+                    <div class="text-[10px] text-slate-400">Market Complex</div>
+                </div>
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-location-dot text-brandAmber mb-1 text-sm"></i>
+                    <div class="font-bold text-xs text-slate-200">Sinazeze</div>
+                    <div class="text-[10px] text-slate-400">Main Road</div>
+                </div>
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 col-span-2 sm:col-span-1">
+                    <i class="fa-solid fa-location-dot text-brandAmber mb-1 text-sm"></i>
+                    <div class="font-bold text-xs text-slate-200">Chirundu</div>
+                    <div class="text-[10px] text-slate-400">Border Shopping</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center text-xs border-t border-slate-700">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="mb-1 text-slate-300 font-semibold">Chima Mobile Centre &copy; 2026. All Rights Reserved.</p>
+            <p>Official Contact: <span class="text-amber-400">+260 977 107 110</span> | Premium Smartphones & Credit Financing</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data and Application Logic -->
+    <script>
+        // Store Phone Contact Number
+        const STORE_WHATSAPP = '260977107110';
+
+        // Initial Product Roster
+        const productsData = [
+            {
+                id: 'p1',
+                brand: 'Infinix',
+                model: 'Infinix Hot 60i',
+                specs: '128GB Storage | 8GB RAM | 5000mAh Battery',
+                cashPrice: 3500,
+                deposit: 1200,
+                monthly: 800,
+                stores: ['Livingstone', 'Choma'],
+                icon: 'fa-mobile-screen-button',
+                bgColor: 'bg-emerald-100 text-emerald-800'
+            },
+            {
+                id: 'p2',
+                brand: 'Infinix',
+                model: 'Infinix Smart 10',
+                specs: '64GB Storage | 4GB RAM | HD+ Display',
+                cashPrice: 2200,
+                deposit: 800,
+                monthly: 520,
+                stores: ['Kazungula', 'Sinazeze'],
+                icon: 'fa-mobile-screen-button',
+                bgColor: 'bg-emerald-100 text-emerald-800'
+            },
+            {
+                id: 'p3',
+                brand: 'Infinix',
+                model: 'Infinix Smart 20',
+                specs: '128GB Storage | 6GB RAM | Fast Charge',
+                cashPrice: 2900,
+                deposit: 1000,
+                monthly: 680,
+                stores: ['Monze', 'Maamba'],
+                icon: 'fa-mobile-screen-button',
+                bgColor: 'bg-emerald-100 text-emerald-800'
+            },
+            {
+                id: 'p4',
+                brand: 'Tecno',
+                model: 'Tecno Spark 20',
+                specs: '256GB Storage | 8GB RAM | 50MP Camera',
+                cashPrice: 4200,
+                deposit: 1400,
+                monthly: 950,
+                stores: ['Livingstone', 'Chirundu'],
+                icon: 'fa-mobile-button',
+                bgColor: 'bg-blue-100 text-blue-800'
+            },
+            {
+                id: 'p5',
+                brand: 'Tecno',
+                model: 'Tecno Pop 8',
+                specs: '64GB Storage | 3GB RAM | 90Hz Display',
+                cashPrice: 1950,
+                deposit: 700,
+                monthly: 450,
+                stores: ['Choma', 'Monze'],
+                icon: 'fa-mobile-button',
+                bgColor: 'bg-blue-100 text-blue-800'
+            },
+            {
+                id: 'p6',
+                brand: 'Itel',
+                model: 'Itel A70',
+                specs: '128GB Storage | 4GB RAM | Octa-Core',
+                cashPrice: 2100,
+                deposit: 750,
+                monthly: 490,
+                stores: ['Kazungula', 'Maamba'],
+                icon: 'fa-mobile',
+                bgColor: 'bg-purple-100 text-purple-800'
+            },
+            {
+                id: 'p7',
+                brand: 'Samsung',
+                model: 'Samsung Galaxy A15',
+                specs: '128GB Storage | 6GB RAM | Super AMOLED',
+                cashPrice: 4800,
+                deposit: 1600,
+                monthly: 1100,
+                stores: ['Livingstone', 'Monze'],
+                icon: 'fa-mobile-retro',
+                bgColor: 'bg-indigo-100 text-indigo-800'
+            },
+            {
+                id: 'p8',
+                brand: 'Samsung',
+                model: 'Samsung Galaxy A05s',
+                specs: '64GB Storage | 4GB RAM | Triple Camera',
+                cashPrice: 3100,
+                deposit: 1100,
+                monthly: 720,
+                stores: ['Sinazeze', 'Chirundu'],
+                icon: 'fa-mobile-retro',
+                bgColor: 'bg-indigo-100 text-indigo-800'
+            },
+            {
+                id: 'p9',
+                brand: 'Accessories',
+                model: 'Fast Charger 18W & Type-C Cable',
+                specs: 'Quick Charge 3.0 | Heavy Duty Cable',
+                cashPrice: 250,
+                deposit: 0,
+                monthly: 0, // Cash only
+                stores: ['Livingstone', 'Kazungula', 'Choma', 'Monze', 'Maamba', 'Sinazeze', 'Chirundu'],
+                icon: 'fa-plug-circle-bolt',
+                bgColor: 'bg-amber-100 text-amber-800'
+            }
+        ];
+
+        // State Management
+        let selectedTenure = 3;
+
+        // DOM Elements
+        const productGrid = document.getElementById('productGrid');
+        const noResults = document.getElementById('noResults');
+        const searchInput = document.getElementById('searchInput');
+        const brandFilter = document.getElementById('brandFilter');
+        const storeFilter = document.getElementById('storeFilter');
+        const resetFiltersBtn = document.getElementById('resetFilters');
+        const itemCount = document.getElementById('itemCount');
+        const filterTags = document.getElementById('filterTags');
+
+        // Calculator DOM Elements
+        const calcModelSelect = document.getElementById('calcModelSelect');
+        const calcPriceInput = document.getElementById('calcPriceInput');
+        const outCashPrice = document.getElementById('outCashPrice');
+        const outDeposit = document.getElementById('outDeposit');
+        const outMonthly = document.getElementById('outMonthly');
+        const calcWhatsappBtn = document.getElementById('calcWhatsappBtn');
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            populateCalculatorDropdown();
+            setupEventListeners();
+            recalculateCustomCredit();
+        });
+
+        // Render Cards
+        function renderProducts() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedBrand = brandFilter.value;
+            const selectedStore = storeFilter.value;
+
+            const filtered = productsData.filter(item => {
+                const matchesBrand = (selectedBrand === 'all') || (item.brand === selectedBrand);
+                const matchesStore = (selectedStore === 'all') || (item.stores.includes(selectedStore));
+                const matchesSearch = item.model.toLowerCase().includes(searchTerm) || 
+                                      item.specs.toLowerCase().includes(searchTerm) ||
+                                      item.brand.toLowerCase().includes(searchTerm);
+                
+                return matchesBrand && matchesStore && matchesSearch;
+            });
+
+            itemCount.textContent = filtered.length;
+            updateFilterTags(selectedBrand, selectedStore, searchTerm);
+
+            if (filtered.length === 0) {
+                productGrid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            } else {
+                productGrid.classList.remove('hidden');
+                noResults.classList.add('hidden');
+
+                productGrid.innerHTML = filtered.map(item => {
+                    const storeBadgeList = item.stores.join(', ');
+                    
+                    // Generate WhatsApp URL with encoded message
+                    let waMessage = `Hi Chima Mobile Centre, I am inquiring about the *${item.model}*.\nCash Price: ZMW ${item.cashPrice.toLocaleString()}`;
+                    if (item.deposit > 0) {
+                        waMessage += `\nCredit Option: ZMW ${item.deposit.toLocaleString()} Deposit + ZMW ${item.monthly.toLocaleString()}/mo`;
+                    }
+                    waMessage += `\nAvailability Store: ${storeBadgeList}`;
+                    
+                    const waLink = `https://wa.me/${STORE_WHATSAPP}?text=${encodeURIComponent(waMessage)}`;
+
+                    return `
+                        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between">
+                            <div>
+                                <!-- Card Header Visual -->
+                                <div class="bg-gradient-to-br from-slate-100 to-slate-200 h-44 flex flex-col items-center justify-center relative p-4 border-b border-slate-100">
+                                    <span class="absolute top-3 left-3 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-sm ${item.bgColor}">
+                                        ${item.brand}
+                                    </span>
+                                    <i class="fa-solid ${item.icon} text-6xl text-slate-400 my-auto"></i>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-5">
+                                    <h3 class="font-extrabold text-lg text-slate-800 leading-snug mb-1">${item.model}</h3>
+                                    <p class="text-xs text-slate-500 mb-3 font-medium">${item.specs}</p>
+
+                                    <!-- Location Badge -->
+                                    <div class="mb-4 flex items-start gap-1.5 text-amber-700 bg-amber-50 p-2 rounded-lg text-xs font-semibold border border-amber-200/60">
+                                        <i class="fa-solid fa-location-dot mt-0.5 text-amber-600"></i>
+                                        <span>Stocked in: ${storeBadgeList}</span>
+                                    </div>
+
+                                    <!-- Price & Credit Box -->
+                                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+                                        <div class="flex justify-between items-center text-sm">
+                                            <span class="text-slate-500 text-xs font-semibold">Cash Price:</span>
+                                            <span class="font-extrabold text-slate-900">ZMW ${item.cashPrice.toLocaleString()}</span>
+                                        </div>
+
+                                        ${item.deposit > 0 ? `
+                                            <div class="pt-1.5 border-t border-slate-200/80 flex justify-between items-center text-xs">
+                                                <span class="text-emerald-700 font-bold">Credit Down Payment:</span>
+                                                <span class="font-bold text-emerald-800">ZMW ${item.deposit.toLocaleString()}</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs">
+                                                <span class="text-emerald-700 font-bold">Monthly Installment:</span>
+                                                <span class="font-bold text-emerald-800">ZMW ${item.monthly.toLocaleString()} / mo</span>
+                                            </div>
+                                        ` : `
+                                            <div class="pt-1 border-t border-slate-200 text-xs text-slate-400 italic text-center">
+                                                Cash Purchase Only
+                                            </div>
+                                        `}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- WhatsApp Action Button -->
+                            <div class="px-5 pb-5 pt-1">
+                                <a href="${waLink}" target="_blank" 
+                                   class="w-full bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl shadow transition duration-150 flex items-center justify-center gap-2 text-xs">
+                                    <i class="fa-brands fa-whatsapp text-base"></i>
+                                    <span>Inquire via WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Update tags under filters bar
+        function updateFilterTags(brand, store, search) {
+            let tags = [];
+            if (brand !== 'all') tags.push(`Brand: ${brand}`);
+            if (store !== 'all') tags.push(`Location: ${store}`);
+            if (search) tags.push(`Search: "${search}"`);
+
+            filterTags.innerHTML = tags.map(t => `
+                <span class="bg-slate-200 text-slate-700 px-2.5 py-0.5 rounded-md font-medium text-[11px] flex items-center gap-1">
+                    ${t}
+                </span>
+            `).join('');
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            searchInput.addEventListener('input', renderProducts);
+            brandFilter.addEventListener('change', renderProducts);
+            storeFilter.addEventListener('change', renderProducts);
+            resetFiltersBtn.addEventListener('click', resetAllFilters);
+
+            // Calculator Listeners
+            calcModelSelect.addEventListener('change', (e) => {
+                const val = e.target.value;
+                if (val !== 'custom') {
+                    const found = productsData.find(p => p.id === val);
+                    if (found) {
+                        calcPriceInput.value = found.cashPrice;
+                        recalculateCustomCredit();
+                    }
+                }
+            });
+
+            calcPriceInput.addEventListener('input', () => {
+                calcModelSelect.value = 'custom';
+                recalculateCustomCredit();
+            });
+
+            // Tenure Buttons
+            document.querySelectorAll('.tenure-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.tenure-btn').forEach(b => {
+                        b.classList.remove('bg-brandBlue', 'text-white', 'border-brandBlue');
+                        b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+                    });
+                    const target = e.currentTarget;
+                    target.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+                    target.classList.add('bg-brandBlue', 'text-white', 'border-brandBlue');
+
+                    selectedTenure = parseInt(target.dataset.months);
+                    recalculateCustomCredit();
+                });
+            });
+        }
+
+        function resetAllFilters() {
+            searchInput.value = '';
+            brandFilter.value = 'all';
+            storeFilter.value = 'all';
+            renderProducts();
+        }
+
+        // Calculator Logic
+        function populateCalculatorDropdown() {
+            let options = '<option value="custom">-- Custom Price Input --</option>';
+            productsData.filter(p => p.deposit > 0).forEach(p => {
+                options += `<option value="${p.id}">${p.model} (ZMW ${p.cashPrice})</option>`;
+            });
+            calcModelSelect.innerHTML = options;
+            calcModelSelect.value = 'p1'; // Default
+        }
+
+        function recalculateCustomCredit() {
+            const price = parseFloat(calcPriceInput.value) || 0;
+            
+            // Standard Credit formula: 35% Down Payment, 12% total finance fee over remaining balance
+            const deposit = Math.round(price * 0.35);
+            const remaining = price - deposit;
+            const interestRate = selectedTenure === 3 ? 0.10 : (selectedTenure === 6 ? 0.18 : 0.25);
+            const totalRemainingWithInterest = remaining * (1 + interestRate);
+            const monthlyPayment = Math.round(totalRemainingWithInterest / selectedTenure);
+
+            outCashPrice.textContent = `ZMW ${price.toLocaleString()}`;
+            outDeposit.textContent = `ZMW ${deposit.toLocaleString()}`;
+            outMonthly.textContent = `ZMW ${monthlyPayment.toLocaleString()} / mo (${selectedTenure} Months)`;
+
+            // Update WhatsApp inquiry link for calculator
+            const selectedModelName = calcModelSelect.value !== 'custom' 
+                ? calcModelSelect.options[calcModelSelect.selectedIndex].text 
+                : 'Custom Smartphone';
+
+            const calcMessage = `Hi Chima Mobile Centre, I am interested in applying for credit financing:\n- Item: ${selectedModelName}\n- Estimated Cash Value: ZMW ${price.toLocaleString()}\n- Down Payment: ZMW ${deposit.toLocaleString()}\n- Monthly Payment: ZMW ${monthlyPayment.toLocaleString()} for ${selectedTenure} months.\nPlease advise on required documents.`;
+
+            calcWhatsappBtn.href = `https://wa.me/${STORE_WHATSAPP}?text=${encodeURIComponent(calcMessage)}`;
+        }
+    </script>
+</body>
+</html>
